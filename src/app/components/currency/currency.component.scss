@@ -1,0 +1,30 @@
+.currency-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--dark-purple);
+    border: 1px solid var(--pale-purple);
+    border-width: 1px 0;
+}
+
+.currency-box:hover {
+    background-color: var(--dark-purple-hover);
+}
+
+.currency-box h2, .currency-box button {
+    color: var(--magnolia);
+}
+
+.currency-box button {
+    height: 2rem;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: var(--darker-purple);
+    border-radius: 0.4rem;
+    border: none;
+}
+
+.currency-box button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
