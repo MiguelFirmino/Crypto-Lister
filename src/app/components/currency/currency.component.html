@@ -1,5 +1,5 @@
 <div ngClass="currency-box">
     <h2>{{ myCurrency.name }}</h2>
     <h2>Votes: {{ myCurrency.votes }}</h2>
-    <button>Vote Me!</button>
+    <button (click)="sendVote()">Vote Me!</button>
 </div>

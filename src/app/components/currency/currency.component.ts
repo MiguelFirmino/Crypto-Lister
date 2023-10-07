@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-currency',
@@ -7,4 +7,12 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class CurrencyComponent {
   @Input() myCurrency!: { name:string, votes:number };
+
+  @Output() voteEvent = new EventEmitter<string>();
+
+  constructor() {}
+
+  sendVote() {
+    this.voteEvent.emit(this.myCurrency.name);
+  }
 }
