@@ -5,13 +5,20 @@
     background-color: var(--dark-purple);
     border: 1px solid var(--pale-purple);
     border-width: 1px 0;
+    padding: 0 3rem;
 }
 
 .currency-box:hover {
     background-color: var(--dark-purple-hover);
 }
 
+.currency-box:hover h2 {
+    color: #fff;
+}
+
 .currency-box h2, .currency-box button {
+    flex-grow: 1;
+    width: 33%;
     color: var(--magnolia);
 }
 

@@ -1,4 +1,5 @@
 <div ngClass="currency-box">
+    <img *ngIf="myCurrency.iconLink !== null" src="{{ myCurrency.iconLink }}" alt="{{ myCurrency.name }}">
     <h2>{{ myCurrency.name }}</h2>
     <h2>Votes: {{ myCurrency.votes }}</h2>
     <button (click)="sendVote()">Vote Me!</button>

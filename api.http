@@ -1,5 +1,9 @@
-PUT http://localhost:5000/vote/Bitcoin
+GET https://miguelartioli.pythonanywhere.com/get-currencies
 
 ###
 
-POST http://localhost:5000/clear-votes
+POST https://miguelartioli.pythonanywhere.com/clear-votes
+
+###
+
+PUT https://miguelartioli.pythonanywhere.com/vote/Bitcoin

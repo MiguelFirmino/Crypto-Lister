@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent {
-  @Input() myCurrency!: { name:string, votes:number };
+  @Input() myCurrency!: { name:string, votes:number, iconLink:string };
 
   @Output() voteEvent = new EventEmitter<string>();
 
