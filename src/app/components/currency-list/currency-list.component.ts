@@ -13,15 +13,18 @@ export class CurrencyListComponent implements OnInit {
   constructor(private currencyListService: CurrencyListService) {}
 
   receiveVote(receivedName: string): void {
+    let oldCurrency = this.currencies.find((currency) =>
+    currency.name == receivedName);
+
+    // Increment votes before API call as to appear that feedback is instant
+    oldCurrency!.votes += 1;
+
     this.currencyListService
       .increaseVote(receivedName)
       .subscribe((results: Results) => {
         let data = results.data;
 
         let updatedCurrency = this.createCurrencyObject(data);
-
-        let oldCurrency = this.currencies.find((currency) =>
-          currency.name == updatedCurrency.name);
 
         console.log(updatedCurrency);
         oldCurrency!.votes = updatedCurrency.votes;

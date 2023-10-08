@@ -16,3 +16,10 @@ body {
     border: 0;
     margin: 0;
 }
+
+@font-face {
+    font-family: 'Gotham';
+    src: url(assets/fonts/Gotham-Font/Gotham-Bold.otf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
