@@ -12,11 +12,11 @@ To check out this app go to <a href="https://crypto-lister.vercel.app/">Crypto L
 - [x] Created currency list.
 - [x] Coded API endpoints via Flask.
 - [x] Created SQLite database.
-- [x] Implemented currency list service. 
+- [x] Implemented currency list service.
+- [x] Implemented currencies API.
+- [x] Added icons. 
 
 🚩 To do: 🚩
-- [ ] Figure out how to run API on project.
-- [ ] Add Routing.
 - [ ] Add single vote per user feature.
 - [ ] Add vote removal feature.
 - [ ] Many more...
