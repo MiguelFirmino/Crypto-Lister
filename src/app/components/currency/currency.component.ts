@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Currency } from 'src/app/models/Currency.model';
 
 @Component({
   selector: 'app-currency',
@@ -6,7 +7,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent {
-  @Input() myCurrency!: { name:string, votes:number, iconLink:string };
+  @Input() myCurrency!: Currency;
+  @Input() isFavorite: boolean = false;
 
   @Output() voteEvent = new EventEmitter<string>();
 

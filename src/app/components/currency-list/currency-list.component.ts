@@ -1,18 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { Results } from 'src/app/models/Results.model';
 import { CurrencyListService } from 'src/app/services/currency-list.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Currency } from 'src/app/models/Currency.model';
 
 @Component({
   selector: 'app-currency-list',
   templateUrl: './currency-list.component.html',
-  styleUrls: ['./currency-list.component.scss'],
+  styleUrls: ['./currency-list.component.scss']
 })
 export class CurrencyListComponent implements OnInit {
-  currencies: { name: string; votes: number; iconLink: string }[] = [];
+  currencies: Currency[] = [];
+  favoriteCurrency: string | undefined;
 
-  constructor(private currencyListService: CurrencyListService) {}
+  constructor(private currencyListService: CurrencyListService,
+    private localStorageService: LocalStorageService) {}
+
+  sortCurrencies() {
+    // Sort current currencies without the need of an API call
+    this.currencies = this.currencies.sort((a, b) => b.votes - a.votes);
+  }
+  
+  setFavoriteCurrency(currencyName : string) {
+    this.favoriteCurrency = currencyName;
+    this.localStorageService.saveData('favorite-currency', currencyName);
+  }
 
   receiveVote(receivedName: string): void {
+    // temporary
+    // 
+    // if (this.favoriteCurrency) {
+    //   alert("You've already voted for a currency");
+    //   return;
+    // }
+
     let oldCurrency = this.currencies.find((currency) =>
     currency.name == receivedName);
 
@@ -22,28 +43,32 @@ export class CurrencyListComponent implements OnInit {
     this.currencyListService
       .increaseVote(receivedName)
       .subscribe((results: Results) => {
-        let data = results.data;
+        let newCurrency = this.createCurrencyObject(results.data);
 
-        let updatedCurrency = this.createCurrencyObject(data);
+        oldCurrency!.votes = newCurrency.votes; // Update currency on display to match real time data
 
-        console.log(updatedCurrency);
-        oldCurrency!.votes = updatedCurrency.votes;
+        // this.setFavoriteCurrency(receivedName);
+        this.sortCurrencies();
       });
   }
 
-  createCurrencyObject(currency: any) {
+  createCurrencyObject(currency: any): Currency {
     // Generates object to be properly read by 'currency' component
     // this processing is needed because the database returns tuples,
     // not easily readable.
     // All of this may be avoided through better backend/db design.
-    let receivedName: string = currency[0]; 
-    let receivedVotes: number = currency[1];
-    let receivedLink: string = currency[2];
+    //let receivedName: string = currency[0]; 
+    //let receivedVotes: number = currency[1];
+    //let receivedLink: string = currency[2];
+    //let receivedAka: string = currency[3];
+
+    let [receivedName, receivedVotes, receivedLink, receivedAka] = currency;
 
     let newCurrency = {
       name: receivedName,
       votes: receivedVotes,
       iconLink: receivedLink,
+      aka: receivedAka
     };
 
     return newCurrency;

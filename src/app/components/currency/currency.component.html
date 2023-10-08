@@ -1,6 +1,7 @@
-<div ngClass="currency-box">
-    <img *ngIf="myCurrency.iconLink !== null" src="{{ myCurrency.iconLink }}" alt="{{ myCurrency.name }}">
-    <h2>{{ myCurrency.name }}</h2>
-    <h2>Votes: {{ myCurrency.votes }}</h2>
-    <button (click)="sendVote()">Vote Me!</button>
+<div [ngClass]="{ 'currency-box' : true, 'favorite' : isFavorite }">
+    <img ngClass="icon" src="{{ myCurrency.iconLink }}" alt="{{ myCurrency.name }}">
+    <h2 ngClass="name">{{ myCurrency.name }}</h2>
+    <h3 ngClass="aka">{{ myCurrency.aka }}</h3>
+    <h2 ngClass="votes">Votes: {{ myCurrency.votes }}</h2>
+    <button ngClass="vote-button" (click)="sendVote()">Vote Me!</button>
 </div>

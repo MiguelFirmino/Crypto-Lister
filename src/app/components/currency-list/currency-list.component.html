@@ -1,3 +1,6 @@
 <div ngClass="currency-list" *ngFor="let currency of currencies">
-    <app-currency (voteEvent)="receiveVote($event)" [myCurrency]="currency"></app-currency>
+    <app-currency (voteEvent)="receiveVote($event)" 
+    [myCurrency]="currency" 
+    [isFavorite]="currency.name == favoriteCurrency">
+    </app-currency>
 </div>
