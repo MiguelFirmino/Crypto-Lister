@@ -1,27 +1,32 @@
-# CryptoLister
+# Crypto Lister🏴
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+An Angular Application for voting on different Cryptocurrencies.
 
-## Development server
+## Instructions📜
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To check out this app go to <a href="https://crypto-lister.vercel.app/">Crypto Lister</a>.
 
-## Code scaffolding
+## 🚧 Work in progress! 🚧
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+🚩 Done: 🚩
+- [x] Created currency list.
+- [x] Coded API endpoints via Flask.
+- [x] Created SQLite database.
+- [x] Implemented currency list service. 
 
-## Build
+🚩 To do: 🚩
+- [ ] Figure out how to run API on project.
+- [ ] Add Routing.
+- [ ] Add single vote per user feature.
+- [ ] Add vote removal feature.
+- [ ] Many more...
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<!--
+## Preview🏳️ -->
 
-## Running unit tests
+## Concepts Applied🏴
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Angular's Property Binding.
+- CSS Animation, Transition.
+- Flask API
+- SQLite3 database.
