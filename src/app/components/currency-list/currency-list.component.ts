@@ -1,41 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { Results } from 'src/app/models/Results.model';
 import { CurrencyListService } from 'src/app/services/currency-list.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Currency } from 'src/app/models/Currency.model';
 
 @Component({
   selector: 'app-currency-list',
   templateUrl: './currency-list.component.html',
-  styleUrls: ['./currency-list.component.scss']
+  styleUrls: ['./currency-list.component.scss'],
 })
 export class CurrencyListComponent implements OnInit {
   currencies: Currency[] = [];
-  favoriteCurrency: string | undefined;
+  favoriteCurrency: string | undefined | null;
 
-  constructor(private currencyListService: CurrencyListService,
-    private localStorageService: LocalStorageService) {}
+  constructor(
+    private currencyListService: CurrencyListService
+  ) {}
 
-  sortCurrencies() {
+  sortCurrencies(): void {
     // Sort current currencies without the need of an API call
     this.currencies = this.currencies.sort((a, b) => b.votes - a.votes);
   }
-  
-  setFavoriteCurrency(currencyName : string) {
-    this.favoriteCurrency = currencyName;
-    this.localStorageService.saveData('favorite-currency', currencyName);
+
+  setFavoriteCurrency(currency?: string): void {
+    this.favoriteCurrency = currency;
+    currency
+      ? ( localStorage.setItem('favorite-currency', currency) )
+      : localStorage.removeItem('favorite-currency');
   }
 
+  // find a way to refactor receiveNote and receiveUnvote functions
   receiveVote(receivedName: string): void {
-    // temporary
-    // 
-    // if (this.favoriteCurrency) {
-    //   alert("You've already voted for a currency");
-    //   return;
-    // }
+    // Do not register vote if there is a favorite currency
+    if (this.favoriteCurrency) {
+      alert("You've already voted for a currency");
+      return;
+    }
 
-    let oldCurrency = this.currencies.find((currency) =>
-    currency.name == receivedName);
+    let oldCurrency = this.currencies.find(
+      (currency) => currency.name == receivedName
+    );
+    this.setFavoriteCurrency(receivedName);
 
     // Increment votes before API call as to appear that feedback is instant
     oldCurrency!.votes += 1;
@@ -47,34 +51,50 @@ export class CurrencyListComponent implements OnInit {
 
         oldCurrency!.votes = newCurrency.votes; // Update currency on display to match real time data
 
-        // this.setFavoriteCurrency(receivedName);
         this.sortCurrencies();
       });
+  }
+
+  receiveUnvote(receivedName: string): void {
+    let oldCurrency = this.currencies.find(
+      (currency) => currency.name == receivedName
+    );
+
+    // Decrease votes before API call as to appear that feedback is instant
+    oldCurrency!.votes -= 1;
+
+    this.currencyListService
+      .decreaseVote(receivedName)
+      .subscribe((results: Results) => {
+        let newCurrency = this.createCurrencyObject(results.data);
+
+        oldCurrency!.votes = newCurrency.votes; // Update currency on display to match real time data
+
+        this.sortCurrencies();
+      });
+
+    this.setFavoriteCurrency();
   }
 
   createCurrencyObject(currency: any): Currency {
     // Generates object to be properly read by 'currency' component
     // this processing is needed because the database returns tuples,
     // not easily readable.
-    // All of this may be avoided through better backend/db design.
-    //let receivedName: string = currency[0]; 
-    //let receivedVotes: number = currency[1];
-    //let receivedLink: string = currency[2];
-    //let receivedAka: string = currency[3];
-
+    // (all of this may be avoided through better backend/db design)
     let [receivedName, receivedVotes, receivedLink, receivedAka] = currency;
 
     let newCurrency = {
       name: receivedName,
       votes: receivedVotes,
       iconLink: receivedLink,
-      aka: receivedAka
+      aka: receivedAka,
     };
 
     return newCurrency;
   }
 
   ngOnInit(): void {
+    // Request all currencies and generate 'Currency' objects
     this.currencyListService.getAllCurrencies().subscribe((results) => {
       console.log(results);
       let data = results.data;
@@ -87,5 +107,7 @@ export class CurrencyListComponent implements OnInit {
         this.currencies.push(newCurrency);
       }
     });
+
+    this.favoriteCurrency = localStorage.getItem('favorite-currency');
   }
 }

@@ -19,6 +19,12 @@ export class CurrencyListService {
   increaseVote(currencyName: string): Observable<Results> {
     let url = "https://miguelartioli.pythonanywhere.com/vote/" + currencyName;
 
-    return this.http.put<Results>(url, currencyName);
+    return this.http.put<Results>(url, {});
+  }
+
+  decreaseVote(currencyName: string): Observable<Results> {
+    let url = "https://miguelartioli.pythonanywhere.com/remove-vote/" + currencyName;
+
+    return this.http.put<Results>(url, {});
   }
 }

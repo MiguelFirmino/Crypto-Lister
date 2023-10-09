@@ -7,3 +7,7 @@ POST https://miguelartioli.pythonanywhere.com/clear-votes
 ###
 
 PUT https://miguelartioli.pythonanywhere.com/vote/Bitcoin
+
+###
+
+PUT https://miguelartioli.pythonanywhere.com/remove-vote/Solana

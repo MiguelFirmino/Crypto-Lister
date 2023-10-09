@@ -1,7 +1,12 @@
 <div [ngClass]="{ 'currency-box' : true, 'favorite' : isFavorite }">
+    <span ngClass="star" *ngIf="isFavorite">⭐</span>
     <img ngClass="icon" src="{{ myCurrency.iconLink }}" alt="{{ myCurrency.name }}">
     <h2 ngClass="name">{{ myCurrency.name }}</h2>
     <h3 ngClass="aka">{{ myCurrency.aka }}</h3>
-    <h2 ngClass="votes">Votes: {{ myCurrency.votes }}</h2>
-    <button ngClass="vote-button" (click)="sendVote()">Vote Me!</button>
+    <h3 ngClass="votes">Votes: {{ myCurrency.votes }}</h3>
+    <button ngClass="vote-button" 
+    (click)="isFavorite ? sendUnvote() : sendVote()"
+    [disabled]="isDisabled">
+        {{ isFavorite ? "Remove Favorite" : "Vote Me!"}}
+    </button>
 </div>

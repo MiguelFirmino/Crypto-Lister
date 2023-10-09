@@ -18,8 +18,15 @@ body {
 }
 
 @font-face {
-    font-family: 'Gotham';
+    font-family: 'Gotham Bold';
     src: url(assets/fonts/Gotham-Font/Gotham-Bold.otf) format('truetype');
     font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham Medium';
+    src: url(assets/fonts/Gotham-Font/GothamMedium.ttf);
+    font-weight: normal;
     font-style: normal;
 }
