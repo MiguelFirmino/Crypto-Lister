@@ -1,6 +1,6 @@
 # Crypto Lister🏴
 
-An Angular Application for voting on different Cryptocurrencies.
+A full-stack application that allows the user to vote for a cryptocurrency and check the popularity of each.
 
 ## Instructions📜
 
@@ -14,7 +14,9 @@ To check out this app go to <a href="https://crypto-lister.vercel.app/">Crypto L
 - [x] Created SQLite database.
 - [x] Implemented currency list service.
 - [x] Implemented currencies API.
-- [x] Added icons. 
+- [x] Added icons.
+- [x] Added aka's.
+- [x] Added header.  
 
 🚩 To do: 🚩
 - [ ] Add single vote per user feature.
@@ -28,5 +30,5 @@ To check out this app go to <a href="https://crypto-lister.vercel.app/">Crypto L
 
 - Angular's Property Binding.
 - CSS Animation, Transition.
-- Flask API
+- Flask API.
 - SQLite3 database.
