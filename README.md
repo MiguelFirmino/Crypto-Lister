@@ -6,6 +6,16 @@ A full-stack application that allows the user to vote for a cryptocurrency and c
 
 To check out this app go to <a href="https://crypto-lister.vercel.app/">Crypto Lister</a>.
 
+1) Scroll through the list of currencies and find your favorite one.
+2) Click the "Vote Me" button on the preffered currency to send your vote.
+3) If you'd like to undo your vote, click the "Remove Favorite" button.
+
+## Setup:
+
+```
+ng serve
+```
+
 ## 🚧 Work in progress! 🚧
 
 🚩 Done: 🚩
@@ -16,11 +26,14 @@ To check out this app go to <a href="https://crypto-lister.vercel.app/">Crypto L
 - [x] Implemented currencies API.
 - [x] Added icons.
 - [x] Added aka's.
-- [x] Added header.  
+- [x] Added header.
+- [x] Implemented single vote per user feature.
+- [X] Implemented vote removal feature. 
 
 🚩 To do: 🚩
-- [ ] Add single vote per user feature.
-- [ ] Add vote removal feature.
+- [ ] Make app mobile friendly.
+- [ ] Implement admin mode(debug).
+- [ ] Add more user feedback.
 - [ ] Many more...
 
 <!--
