@@ -1,3 +1,5 @@
+import { Currency } from "./Currency.model"
+
 export interface Results {
-    data: Array<[string, number, string]>
+    data: Currency[]
 }

@@ -32,7 +32,6 @@ export class CurrencyListComponent implements OnInit {
   receiveVote(receivedName: string): void {
     // Do not register vote if there is a favorite currency
     if (this.favoriteCurrency) {
-      alert("You've already voted for a currency");
       return;
     }
 
@@ -47,8 +46,9 @@ export class CurrencyListComponent implements OnInit {
     this.currencyListService
       .increaseVote(receivedName)
       .subscribe((results: Results) => {
-        let newCurrency = this.createCurrencyObject(results.data);
+        let newCurrency = results.data[0];
 
+        console.log(newCurrency);
         oldCurrency!.votes = newCurrency.votes; // Update currency on display to match real time data
 
         this.sortCurrencies();
@@ -66,7 +66,7 @@ export class CurrencyListComponent implements OnInit {
     this.currencyListService
       .decreaseVote(receivedName)
       .subscribe((results: Results) => {
-        let newCurrency = this.createCurrencyObject(results.data);
+        let newCurrency = results.data[0];
 
         oldCurrency!.votes = newCurrency.votes; // Update currency on display to match real time data
 
@@ -76,25 +76,8 @@ export class CurrencyListComponent implements OnInit {
     this.setFavoriteCurrency();
   }
 
-  createCurrencyObject(currency: any): Currency {
-    // Generates object to be properly read by 'currency' component
-    // this processing is needed because the database returns tuples,
-    // not easily readable.
-    // (all of this may be avoided through better backend/db design)
-    let [receivedName, receivedVotes, receivedLink, receivedAka] = currency;
-
-    let newCurrency = {
-      name: receivedName,
-      votes: receivedVotes,
-      iconLink: receivedLink,
-      aka: receivedAka,
-    };
-
-    return newCurrency;
-  }
-
   ngOnInit(): void {
-    // Request all currencies and generate 'Currency' objects
+    // Requests all currencies
     this.currencyListService.getAllCurrencies().subscribe((results) => {
       console.log(results);
       let data = results.data;
@@ -102,7 +85,7 @@ export class CurrencyListComponent implements OnInit {
       for (let i = 0; i < data.length; i++) {
         let currency = data[i];
 
-        let newCurrency = this.createCurrencyObject(currency);
+        let newCurrency = currency;
 
         this.currencies.push(newCurrency);
       }
