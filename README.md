@@ -34,7 +34,6 @@ ng serve
 - [ ] Make app mobile friendly.
 - [ ] Implement admin mode(debug).
 - [ ] Add more user feedback.
-- [ ] Many more...
 
 <!--
 ## Preview🏳️ -->
