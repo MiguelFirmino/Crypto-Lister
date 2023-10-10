@@ -28,12 +28,16 @@ ng serve
 - [x] Added aka's.
 - [x] Added header.
 - [x] Implemented single vote per user feature.
-- [X] Implemented vote removal feature. 
+- [X] Implemented vote removal feature.
+- [x] Make app mobile friendly.
 
 🚩 To do: 🚩
-- [ ] Make app mobile friendly.
-- [ ] Implement admin mode(debug).
 - [ ] Add more user feedback.
+- [ ] Implement Angular Routes.
+  - [x] Home page.
+  - [ ] 404 error page.
+  - [ ] 500 error page.
+- [ ] Implement Angular BreakpointObserver.
 
 <!--
 ## Preview🏳️ -->
