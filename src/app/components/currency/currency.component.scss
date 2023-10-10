@@ -112,6 +112,12 @@
     }
 }
 
+@media only screen and (max-width: 1050px) {
+    .currency-box .vote-button {
+        width: 25%;
+    }
+}
+
 @media only screen and (max-width: 850px) {
     .currency-box {
         width: 90vw;
@@ -121,6 +127,14 @@
     .currency-box .star {
         position: relative;
         left: 0;
+    }
+
+    .currency-box .votes {
+        margin-right: 1rem;
+    }
+
+    .currency-box .vote-button {
+        width: 30%;
     }
 }
 
@@ -145,15 +159,11 @@
     }
 
     .currency-box .vote-button {
-        width: 25%;
+        width: 33%;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .currency-box .votes {
-        margin-right: 1rem;
-    }
-
     .currency-box .vote-button {
         width: 40%;
     }
