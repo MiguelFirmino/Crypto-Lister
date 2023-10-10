@@ -117,6 +117,11 @@
         width: 90vw;
         padding: 0 2rem;
     }
+
+    .currency-box .star {
+        position: relative;
+        left: 0;
+    }
 }
 
 @media only screen and (max-width: 650px) {
@@ -146,6 +151,6 @@
 
 @media only screen and (max-width: 500px) {
     .currency-box .vote-button {
-        width: 33%;
+        width: 40%;
     }
 }
