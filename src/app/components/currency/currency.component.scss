@@ -150,6 +150,10 @@
 }
 
 @media only screen and (max-width: 500px) {
+    .currency-box .votes {
+        margin-right: 1rem;
+    }
+
     .currency-box .vote-button {
         width: 40%;
     }
