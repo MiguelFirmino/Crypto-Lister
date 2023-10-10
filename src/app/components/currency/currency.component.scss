@@ -8,6 +8,10 @@
     border-width: 1px 0;
     padding: 0 3rem;
     height: 4rem;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 75vw;
+    max-width: 100%;
 }
 
 .currency-box:hover {
@@ -35,7 +39,7 @@
 
 .currency-box .aka {
     margin-right: 0.5rem;
-    font-weight: 300;
+    font-weight: lighter;
     color: var(--light-purple);
 }
 
@@ -99,5 +103,49 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .currency-box {
+        width: 85vw;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .currency-box {
+        width: 90vw;
+        padding: 0 2rem;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .currency-box {
+        width: 100vw;
+        padding: 0 1rem;
+    }
+
+    .currency-box .name {
+        display: none;
+    }
+
+    .currency-box .aka {
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--magnolia);
+    }
+
+    .currency-box:hover .aka {
+        color: #fff;
+    }
+
+    .currency-box .vote-button {
+        width: 25%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .currency-box .vote-button {
+        width: 33%;
     }
 }

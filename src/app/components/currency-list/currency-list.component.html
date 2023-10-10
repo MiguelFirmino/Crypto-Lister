@@ -1,9 +1,7 @@
-<div ngClass="currency-list" *ngFor="let currency of currencies">
-    <app-currency 
+<app-currency *ngFor="let currency of currencies"
     (voteEvent)="receiveVote($event)" 
     (unvoteEvent)="receiveUnvote($event)"
     [myCurrency]="currency" 
     [isFavorite]="currency.name == favoriteCurrency"
     [isDisabled]="(favoriteCurrency && currency.name != favoriteCurrency) ? true : false">
-    </app-currency>
-</div>
+</app-currency>
