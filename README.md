@@ -39,8 +39,11 @@ ng serve
   - [ ] 500 error page.
 - [ ] Implement Angular BreakpointObserver.
 
-<!--
-## Preview🏳️ -->
+## Preview🏳️
+
+Here you can check out the voting interface.
+
+<img src="github-images/crypto-lister.png" width=850> </img>
 
 ## Concepts Applied🏴
 
